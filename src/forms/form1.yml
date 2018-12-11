@@ -1,0 +1,22 @@
+name: 'login-form'
+title: 'Login form'
+
+fields:
+  - name: 'email'
+    type: 'email'
+    label: 'Email address'
+    placeholder: 'Enter your email address here'
+    tooltip: 'Type your email address in this field'
+
+  - name: 'password'
+    type: 'password'
+    label: 'Password'
+    placeholder: 'Enter your password here'
+    tooltip: 'Type your password in this field'
+
+  - name: 'chckbx'
+    type: 'checkbox'
+    label: 'A random checkbox'
+    tooltip: 'Toggle on or off the button by clicking on it'
+
+submitText: 'Login'

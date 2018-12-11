@@ -1,12 +1,35 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import 'bootstrap/dist/js/bootstrap.min.js'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faInfoCircle, faCircleNotch } from '@fortawesome/free-solid-svg-icons'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import './index.css'
+import Form from './components/Form'
+import form1 from './forms/form1.yml'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+library.add(faInfoCircle, faCircleNotch)
+
+const initialValues = {
+    email: 'admin@admin.com',
+    password: 'admin',
+    chckbx: true
+}
+
+ReactDOM.render(
+    <div className="container" style={{ marginTop: '40px' }}>
+        <Form
+            {...form1}
+            initialValues={initialValues}
+            onSubmit={(values, { onSuccess, onError }) => {
+                setTimeout(() => {
+                    if (values.email === 'admin@admin.com' && values.password === 'admin') {
+                        onSuccess('Login successful.', () => {})
+                    } else {
+                        onError('Invalid creds.')
+                    }
+                }, 1000)
+            }}
+        />
+    </div>, document.getElementById('root'))
