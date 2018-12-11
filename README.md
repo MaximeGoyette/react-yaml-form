@@ -1,6 +1,6 @@
 # React-yaml-form
 
-This react component renders a form based on a yaml file. The developer has control over the onSubmit event.
+React component that renders a form based on a yaml schema using Bootstrap 4 and a bunch of other stuff. This component probably has too many dependencies to be relevant but whatever ¯\\_(ツ)_/¯. The developer has control over the onSubmit event, which returns the final values of the fields.
 
 ## Example
 
