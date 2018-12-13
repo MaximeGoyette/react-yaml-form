@@ -2,21 +2,39 @@ name: 'login-form'
 title: 'Login form'
 
 fields:
-  - name: 'email'
-    type: 'email'
-    label: 'Email address'
-    placeholder: 'Enter your email address here'
-    tooltip: 'Type your email address in this field'
+    email:
+        type: 'email'
+        label: 'Email address'
+        placeholder: 'Enter your email address here'
+        tooltip: 'Type your email address in this field.'
+        checks:
+          - regexp: '^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$'
+            msg: 'Invalid email format.'
 
-  - name: 'password'
-    type: 'password'
-    label: 'Password'
-    placeholder: 'Enter your password here'
-    tooltip: 'Type your password in this field'
+    password:
+        type: 'password'
+        label: 'Password'
+        placeholder: 'Enter your password here'
+        tooltip: 'Type your password in this field.'
+        checks:
+          - length: '8..'
+            msg: 'Password must be at least 8 characters.'
+          - regexp: '[A-Z]'
+            msg: 'Password must contain at least one uppercase letter.'
+          - regexp: '[a-z]'
+            msg: 'Password must contain at least one lowercase letter.'
+          - regexp: '[0-9]'
+            msg: 'Password must contain at least one numeral digit.'
+          - regexp: '[^A-Za-z0-9]'
+            msg: 'Password must contain at least one special character.'
 
-  - name: 'chckbx'
-    type: 'checkbox'
-    label: 'A random checkbox'
-    tooltip: 'Toggle on or off the button by clicking on it'
+    password-confirmation:
+        type: 'password'
+        label: 'Password confirmation'
+        placeholder: 'Enter your password here one more time'
+        tooltip: 'This field is used to confirm that the password was correctly typed.'
+        checks:
+          - matches: 'password'
+            msg: 'Passwords do not match.'
 
 submitText: 'Login'
