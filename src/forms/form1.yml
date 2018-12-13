@@ -1,5 +1,5 @@
-name: 'login-form'
-title: 'Login form'
+name: 'registration-form'
+title: 'Registration form'
 
 fields:
     email:
@@ -37,4 +37,4 @@ fields:
           - matches: 'password'
             msg: 'Passwords do not match.'
 
-submitText: 'Login'
+submitText: 'Register'
