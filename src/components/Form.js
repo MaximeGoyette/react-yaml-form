@@ -143,17 +143,17 @@ class Form extends Component {
     checkField = (checks, value) => {
         const msgs = _.map(checks, check => {
             if (check.regexp && !(new RegExp(check.regexp).test(value))) {
-                return check.msg
+                return check.msg || `Check for RegExp "${check}" has failed.`
             } else if (check.length) {
                 const extremums = _.map(check.length.split('..'), o => parseInt(o))
                 if (value.length < extremums[0] || value.length > extremums[1]) {
-                    return check.msg
+                    return check.msg || `Check for length of "${check.length}" has failed.`
                 }
             } else if (check.matches) {
                 if (!this.props.fields[check.matches]) {
                     throw new Error(`The field "${check.matches}" doesn't exist.`)
                 } else if (value !== this.state.values[check.matches]) {
-                    return check.msg
+                    return check.msg || `Check for matching value with "${check.matches}" field has failed.`
                 }
             }
         })
