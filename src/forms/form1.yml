@@ -12,7 +12,7 @@ fields:
             msg: 'Invalid email format.'
 
     password:
-        type: 'password'
+        type: 'text'
         label: 'Password'
         placeholder: 'Enter your password here'
         tooltip: 'Type your password in this field.'

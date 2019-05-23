@@ -172,10 +172,13 @@ class Form extends Component {
             )
         }
 
+        let disabled = false
+
         const renderedfields = _.map(fields, (field, name) => {
             const { values, touched } = this.state
             const value = values[name] || ''
             const msgs = this.checkField(field.checks, value)
+            if (msgs) disabled = true
             const isTouched = touched.includes(name)
             const isValid = msgs.length === 0
 
@@ -275,7 +278,7 @@ class Form extends Component {
                     <button
                         className="btn btn-info btn-block"
                         type="submit"
-                        disabled={submitting}
+                        disabled={submitting || disabled}
                     >
                         {
                             (submitting) ? (
